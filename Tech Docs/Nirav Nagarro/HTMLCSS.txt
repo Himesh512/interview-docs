@@ -1,0 +1,479 @@
+------------------------------------------------------------------
+HTML
+------------------------------------------------------------------  
+HTML Global Attributes
+
+	class	Specifies one or more classnames for an element (refers to a class in a style sheet)
+	contenteditable	Specifies whether the content of an element is editable or not
+	data-*	Used to store custom data private to the page or application
+	dir	Specifies the text direction for the content in an element
+	draggable	Specifies whether an element is draggable or not
+	hidden	Specifies that an element is not yet, or is no longer, relevant
+	id	Specifies a unique id for an element
+	lang	Specifies the language of the element's content
+	spellcheck	Specifies whether the element is to have its spelling and grammar checked or not
+	style	Specifies an inline CSS style for an element
+	tabindex	Specifies the tabbing order of an element
+	title	Specifies extra information about an element
+	translate	Specifies whether the content of an element should be translated or not
+
+
+
+
+What does semantic HTML mean?
+	A semantic element clearly describes its meaning to both the browser and the developer.
+
+	Examples of non-semantic elements: <div> and <span> - Tells nothing about its content.
+
+	Examples of semantic elements: <form>, <table>, and <article> - Clearly defines its content.
+	Ex.
+	    <article>
+		<aside>
+		<details>
+		<figcaption>
+		<figure>
+		<footer>
+		<header>
+		<main>
+		<mark>
+		<nav>
+		<section>
+		<summary>
+		<time>
+
+HTML Layout Elements
+
+	<header> - Defines a header for a document or a section
+	<nav> - Defines a set of navigation links
+	<aside> - Defines content aside from the content (like a sidebar)
+	<footer> - Defines a footer for a document or a section
+	
+	<section> - Defines a section in a document
+	<article> - Defines an independent, self-contained content
+	
+	
+	<details> - Defines additional details that the user can open and close on demand
+	<summary> - Defines a heading for the <details> element
+	
+What is the difference between a tag and an attribute?
+   HTML tags are elements. Think <a>, <button>, and <div>. HTML attributes describe characteristics of elements. Think src, class, and id.	
+   
+
+HTML5 API LIST
+
+	Drag and Drop
+	Canvas 2D Context
+	Forms
+	Web Storage = a key-value pair storage framework that provides behavior similar to cookies but with larger storage capacity and improved API.
+	Web Workers
+	Geolocation — get the latitude and longitude of the user’s browser
+	File — get file information from local files selected via file input, or drag and drop
+	History — add or remove URLs in the browser’s history stack — useful in single-page apps
+	Audio API
+	Video API
+
+
+Difference between Html and Html5
+	HTML5 supports both audio and video while none of them were part of HTML.
+	SVG and canvas are part of HTML5 while not part of HTML.
+	HTML5 supports new types of form controls, such as date and time, email, number, category, title, Url, search, etc.
+	
+	
+Meta Tag	
+	The <meta> tag defines metadata about an HTML document. Metadata is data (information) about data.
+	<meta> tags always go inside the <head> element, and are typically used to specify character set, page description, keywords, author of the document, and viewport settings.
+	Metadata will not be displayed on the page, but is machine parsable.
+
+	Metadata is used by browsers (how to display content or reload page), search engines (keywords), and other web services.
+	
+
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="description" content="Free Web tutorials">
+	  <meta name="keywords" content="HTML, CSS, JavaScript">
+	  <meta name="author" content="John Doe">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta http-equiv = "refresh" content = "5" /> - Refresh page in every 5 seconds
+	</head>
+	
+What is BOM?
+	BOM stands for (Browser Object Model). 
+	It provides interaction with the browser. 
+	The default object of a browser is a window.
+	The window object provides various properties like 
+	Window object methods:  
+						alert, confirm, prompt
+						document, navigator, 
+						location, history
+						screen, innerHeight, innerWidth,
+	
+What is DOM?
+	DOM stands for (Document Object Model).
+	A document object represents the HTML document.
+	It can be used to access and change the content of HTML.
+	It is the root element that represents the html document.
+	Properties of document object - anchor, , link
+	Dom Elements:
+		div,
+		p,
+		span,
+		a,
+		form(text,textarea,select,radio,button,checkbox),
+		lable,
+		img,
+		ul,
+		li,
+		
+	Dom Attribute
+		class
+		href
+		width
+		height
+		src
+		style
+		title
+		
+	Dom Methods:
+		document.getElementById
+		document.getElementsByTagName
+		document.getElementsByClassName
+		document.querySelectorAll
+		
+	Dom Events:
+		onLoad,
+		onchange,
+		onmouseover and onmouseout,
+		onmousedown, onmouseup and onclick
+		
+web worker vs service worker	
+
+	Pros
+		Web workers run some code in the background without affecting normal execution of the program.
+		
+	Cons
+        It can't access below object
+			The window object
+			The document object
+			The parent object	
+
+	Without web worker complex operation might block UI, hang UI and you can't perform any other activity during this time
+	To overcome this situation we have web workers which run heavy programmes in the background.
+	
+
+	Ex.
+	
+		var worker = new Worker("file.js")
+		
+		onMessage() - Receive message from Web worker
+		postMessage() - Send message to web worker 
+	
+
+Service Worker(Used to achieve PWA) - Help to achieve offline Website
+	A service worker is a type of web worker. Unlike web workers, service workers allow you to intercept network requests (via the fetch event) and to listen for Push API events in the background (via the push event).
+	A page can spawn multiple web workers, but a single service worker controls all the active tabs under the scope it was registered with.
+	
+	
+	closing the tab where a web worker is running will terminate it,
+	while a service worker can continue running in the background, even when the site doesn't have any active tabs open.
+	
+	
+	Web workers can't run in offline mode while service workers can run in offline mode.
+	
+	
+	
+Web socket
+		Web sockets provide real-time communication (required in Gaming applications, chat engines and so on) between a client and a server.
+		
+		Conventional Techniques for Achieving Real-Time Communication
+			Polling
+ 
+			Polling is a technique in which a client continuously sends an HTTP request to the server at a specified time interval and the response is sent from the server to update the information. 
+			
+		WebSocket Methods
+
+			Socket.send() The send(data) method transmits data using the connection.
+
+			Socket.close() The close() method would be used to terminate any existing connection.
+			
+			
+		WebSocket Events
+			Following are the events associated with WebSocket object. Assuming we created Socket object as mentioned above −
+
+			Event	Event Handler	Description
+			open	Socket.onopen	This event occurs when socket connection is established.
+			message	Socket.onmessage	This event occurs when client receives data from the server.
+			error	Socket.onerror	This event occurs when there is any error in communication.
+			close	Socket.onclose	This event occurs when connection is closed.	
+	
+----------------------------------------
+CSS
+----------------------------------------
+
+
+CSS Box Model
+	It consists of: margins, borders, padding, and the actual content. 
+
+	Content - The content of the box, where text and images appear
+	Padding - Padding is used to create space around an element's content, inside of any defined borders.
+	Border - A border that goes around the padding and content
+	Margin - Margins are used to create space around elements, outside of any defined borders.
+
+CSS selectors are used to "find" (or select) the HTML elements you want to style.
+
+	We can divide CSS selectors into five categories:
+
+	Simple selectors (select elements based on name, id, class)
+	Combinator selectors (select elements based on a specific relationship between them)
+	Pseudo-class selectors (select elements based on a certain state)
+	Pseudo-elements selectors (select and style a part of an element)
+	Attribute selectors (select elements based on an attribute or attribute value)
+
+
+What is a pseudo class in CSS? (only 1 colon : before elements)
+	CSS pseudo-classes are used to add styles to selectors.
+	
+	Ex.
+	Anchor Pseudo-classes(a:link(Default state) --> a:visited(After click state) --> a:hover --> a:active(On Clicking state))
+	
+	form pseudo Class :  input(:focus, :read-only, :required, :valid,  :invalid, :disabled, :enabled) 
+						Checkbox, Radio	(:checked )
+	
+	p:first-child, p:last-child,  p:nth-child(2), :not(p),
+	
+	:lang
+	
+	This class is useful in documents that must appeal to multiple languages that have different conventions for certain language constructs. For example, the French language typically uses angle brackets (< and >) for quoting purposes, while the English language uses quote marks (' and ').
+
+	In a document that needs to address this difference, you can use the :lang pseudo-class to change the quote marks appropriately. The following code changes the <blockquote> tag appropriately for the language being used −
+	
+	   <style type = "text/css">
+         
+         /* Two levels of quotes for two languages*/
+         :lang(en) { quotes: '"' '"'  "'"  "'"; }
+         :lang(fr) { quotes: "<<" ">>" "<" ">"; }
+      </style>
+		<p>...<q lang = "fr">A quote in a paragraph</q>...</p>
+		Result: << A quote in a paragraph>>
+		
+		
+		
+		
+What are Pseudo-Elements(Selectors)?(:: two colon before elements)
+			p::first-letter  ---> used to add a special style to the first letter of a text.
+			p::first-line    ---> used to add a special style to the first line of a text.
+			p::before        ---> used to insert some content before the content of an element.
+			p::after         ---> used to insert some content after the content of an element.
+			::marker         ---> used to selects the markers of list items.
+			::selection      ---> used to matches the portion of an element that is selected by a user and apply color, background, cursor, and outline.,
+			
+CSS Combinators
+
+	There are four different combinators in CSS:
+
+	descendant selector (space)   div p {}
+	child selector (>)            div > p{}
+	
+	// sibling selector
+	adjacent sibling selector (+)  div + p{} The adjacent sibling selector is used to select an element that is directly after another specific element.
+	general sibling selector (~) div ~ p {}  The general sibling selector selects all elements that are next siblings of a specified element.
+
+CSS Attribute Selectors	
+	The [attribute] selector is used to select elements with a specified attribute.	
+	
+CSS Pre processor
+		A CSS preprocessor is a scripting language that extends CSS and is compiled into regular CSS syntax. A browser can only understand CSS, which at times may not be enough to write clean and reusable rules
+		
+		There are three main preprocessors – Sass, LESS and Stylus
+			All three preprocessors allow you to create variables, media queries, mixins, nesting, loops & conditionals and importing
+		
+		Ex:
+		Sass -  (Sass was built on Ruby) Syntactically Awesome Style Sheet
+			.sass -- indentation-based and omits semicolons and curly brackets from the code.
+			.scss --  It uses the standard CSS syntax with braces and semicolons.
+			
+			@mixin
+			@mixin card($width, $height, $bg, $border) {} - CSS functions (bunch of related CSS rules)
+			@include - To call function use this
+			
+			@extend rule, we can add the properties of any class to another one.
+			@if and @else
+			@function
+			
+		LESS (Built on node.js), Leaner Style Sheets
+		Stylus(Built on node.js,)  -- Stylus uses the .styl
+		
+		
+Top 5 CSS Frameworks
+	Bootstrap
+	UIkit
+	Materialize CSS
+	Pure
+	
+	
+CSS Units
+		px, em, rem, vh, vw
+		
+		em	Relative to the font-size of the its direct or nearest parent (2em means 2 times the size of the current font)
+		rem	Relative to font-size of the root element r(root)em
+		vw	Relative to 1% of the width of the viewport*
+		vh	Relative to 1% of the height of the viewport*
+		
+		The em and rem units are practical in creating perfectly scalable layout!
+
+
+CSS Math Functions
+	calc(), max() and min()
+		
+		
+CSS Text Effects
+	text-overflow
+	word-wrap
+	word-break
+	writing-mode
+	
+	
+CSS 2D Transforms Methods
+		translate()
+		rotate()
+		scaleX()
+		scaleY()
+		scale()
+		skewX()
+		skewY()
+		skew()
+		matrix()
+		
+CSS 3D Transforms
+		rotateX()
+		rotateY()
+		rotateZ()
+	
+	
+CSS Transitions		
+		CSS transitions allows you to change property values smoothly, over a given duration
+		transition
+		transition-delay
+		transition-duration
+		transition-property
+		transition-timing-function
+		
+CSS Variables - The var() Function
+			The var() function is used to insert the value of a CSS variable.
+			:root {
+			  --blue: #1e90ff;
+			  --white: #ffffff;
+			}
+
+			body { background-color: var(--blue); }
+			
+			
+			
+CSS Box Sizing (box-sizing: border-box;)
+	The CSS box-sizing property allows us to include the padding and border in an element's total width and height.
+	
+	By default, the width and height of an element is calculated like this:
+
+	width + padding + border = actual width of an element
+	height + padding + border = actual height of an element
+
+	The box-sizing property allows us to include the padding and border in an element's total width and height.
+
+	If you set box-sizing: border-box; on an element, padding and border are included in the width and height
+	
+	Properties
+		margin
+		padding
+		border
+		content
+		
+CSS inline vs inline block
+	display: inline-block allows to set a width and height on the element.
+	While inline not set width and height of elements
+
+Responsive Web Design 
+	Setting The Viewport
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  
+	Grid-View? - screen divided into 12 part - 100%/12 - 8.33%
+		<div class="row">
+		  <div class="col-3">...</div> <!-- 25% -->
+		  <div class="col-9">...</div> <!-- 75% -->
+		</div>
+	
+	CSS Flexbox - With display flex
+		.flex-container {
+		  display: flex;
+		}
+		
+		The flex container properties are:(Parent property)
+
+			flex-direction -  in which direction the container wants to stack the flex items.properties(row -{default},column,row-reverse,column-reverse)
+			flex-wrap - Properties - wrap(flex items will wrap if necessary:), nowrap(default)
+			flex-flow - flex-flow property is a shorthand property for setting both the flex-direction and flex-wrap properties.
+			
+			justify-content - used to align the flex items horizontally. properties (center,flex-start,flex-end,space-around,space-between)
+			align-items - align the flex items vertically. properties (center,flex-start,flex-end,stretch)
+			
+			align-content - property is used to align the flex lines. Properties (space-between,space-around,stretch,center)
+		
+		The flex item properties are:
+
+			order - specifies the order of the flex items.
+			flex-grow
+			flex-shrink
+			flex-basis
+			flex
+			align-self
+			
+			
+			// Responsive example
+			.flex-container {
+			  display: flex;
+			  flex-direction: row;
+			}
+
+			/* Responsive layout - makes a one column layout instead of a two-column layout */
+			@media (max-width: 800px) {
+			  .flex-container {
+				flex-direction: column;
+			  }
+			}
+
+	Media Query
+
+		/* Extra small devices (phones, 600px and down) */
+		@media only screen and (max-width: 600px) {...}
+
+		/* Small devices (portrait tablets and large phones, 600px and up) */
+		@media only screen and (min-width: 600px) {...}
+
+		/* Medium devices (landscape tablets, 768px and up) */
+		@media only screen and (min-width: 768px) {...}
+
+		/* Large devices (laptops/desktops, 992px and up) */
+		@media only screen and (min-width: 992px) {...}
+
+		/* Extra large devices (large laptops and desktops, 1200px and up) */
+		@media only screen and (min-width: 1200px) {...}	
+		
+		@media only screen and (orientation: landscape) {...}
+		
+	Frameworks
+		Bootstrap
+			
+
+
+
+-
+		
+CSS Grid	
+
+
+CSS breakpoints are points where the website content responds according to the device width, allowing you to show the best possible layout to the user. CSS breakpoints are also called media query breakpoints, as they are used with media query
+
+
+The flex-grow property specifies how much the item will grow relative to the rest of the flexible items inside the same container.
+
+The flex-shrink property specifies how the item will shrink relative to the rest of the flexible items inside the same container.
+
+The flex-basis property specifies the initial length of a flexible item.

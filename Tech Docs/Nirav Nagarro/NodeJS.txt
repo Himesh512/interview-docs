@@ -1,0 +1,628 @@
+----------------------------------------
+Node js 	
+----------------------------------------
+
+npm init -y
+	Create package.json file
+
+What is Node js?
+	Node.js is an open source server environment.
+    Node.js allows you to run JavaScript on the server.
+	Node.js isn’t a programming language or framework; instead, it’s an environment for them.
+	
+Node js build in which languages?
+	c, c++, JavaScript
+		
+Node js Architecture
+	Components
+		1) CallStack - 
+			main method is entry point of callstack.
+			Any code which is executing by node js is regestered inside main methods.
+			After main() method start execution line by line and print output in output area. 
+			if main method found any apis function which inherited from other language then move it to node apis section
+			
+		2) Node APIs - All functions which inherited from c and c++.
+			Node api start execution of all function which register inside call stack of it and move it to Event loop section after completion.
+			Queue/ Macro and Micro queue
+		3) Event Loop.
+			Event loop section wait for callstack to complete its main method, after that it will move function to callstack area.
+		
+Which engine use by node js to run programme.
+    Chrome V8 engine 		
+	
+What us Event Loop.
+	Event loop section wait for callstack to complete its main method, after that it will move function to callstack area.	
+	
+What is a Module in Node.js?
+	Module is a set of functions you want to include in your application.
+	
+	Node.js Built-in Modules
+	
+	To include a module, use the require() function with the name of the module:
+	
+	url	        To parse URL strings - Create object with its properties
+	querystring	To handle URL query strings
+	path	    To handle file paths
+		path.basename('/test/something.txt') - output - something.txt - Return the last portion of a path
+		path.dirname('/test/something.txt') - output - test - Return the directory part of a path
+		path.extname('/test/something.txt') - output - .txt - return extension
+		require('path').join('/', 'users', 'joe', 'notes.txt'); // '/users/joe/notes.txt'
+		
+	buffer	    To handle binary data
+	events	    To handle events
+	fs	        To handle the file system
+	http	    To make Node.js act as an HTTP server
+	https	    To make Node.js act as an HTTPS server.
+	net	        To create servers and clients
+	os	        Provides information about the operation system
+	stream	    To handle streaming data
+	timers	    To execute a function after a given number of milliseconds
+	util	    To access utility functions
+	v8	        To access information about V8 (the JavaScript engine)
+	vm	        To compile JavaScript code in a virtual machine
+	zlib	    To compress or decompress files
+	
+
+Create Your Own Modules
+	exports.myDateTime = function () {
+	  return Date();
+	};
+
+
+The Built-in HTTP Module
+	var http = require('http');
+	
+	Use the createServer() method to create an HTTP server:
+	
+	var http = require('http');
+
+	//create a server object:
+	http.createServer(function (req, res) {
+	  res.writeHead(200, {'Content-Type': 'text/html'}); // Add an HTTP Header
+	  res.write(req.url); // Read the Query String
+	  res.end(); //end the response
+	}).listen(8080); //the server object listens on port 8080
+
+url module
+	built-in modules to easily split the query string into readable parts, such as the URL module.
+
+	var url = require('url');
+	
+	var q = url.parse(req.url, true).query;
+	var txt = q.year + " " + q.month;
+
+
+Node.js File System Module
+	The Node.js file system module allows you to work with the file system on your computer.
+	
+	var fs = require('fs');
+	
+	Common use for the File System module:
+
+	Read files - fs.readFile()
+	Create files
+		fs.appendFile()
+		fs.open()
+		fs.writeFile()
+	Update files
+		fs.appendFile()
+		fs.writeFile()
+	Delete files
+		fs.unlink()
+	Rename files
+		fs.rename()
+	
+	
+	var http = require('http');
+	var fs = require('fs');
+	http.createServer(function (req, res) {
+	  fs.readFile('demofile1.html', function(err, data) {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(data);
+		return res.end();
+	  });
+	}).listen(8080);
+
+Node.js URL Module
+	The URL module splits up a web address into readable parts.
+	
+	var url = require('url');
+	var adr = 'http://localhost:8080/default.htm?year=2017&month=february';
+	var q = url.parse(adr, true);
+
+
+
+
+What is NPM?
+	NPM is a package manager for Node.js packages
+	
+	
+Events in Node.js?
+	File events
+
+    Objects in Node.js can fire events, like the readStream object fires events when opening and closing a file.
+	
+	var rs = fs.createReadStream('./demofile.txt');
+	rs.on('open', function () {
+	  console.log('The file is open');
+	});
+
+Events Module
+	Node.js has a built-in module, called "Events", where you can create-, fire-, and listen for- your own events.
+	
+	var events = require('events');
+	var eventEmitter = new events.EventEmitter();
+	
+	//Assign the event handler to an event:
+	eventEmitter.on("scream", function () {
+	  console.log("I hear a Call from Nirav Patel!");
+	});
+
+	//Fire the 'scream' event:
+	eventEmitter.emit("scream");
+	
+	
+Node.js Upload Files
+		var formidable = require("formidable");
+
+What is the Raspberry Pi?
+	The Raspberry Pi is a small, affordable, and amazingly capable, credit card size computer.
+	
+What is GPIO?
+	GPIO stands for General Purpose Input Output.	
+	
+	
+Node.js - REPL 
+	It is node js Terminal.
+	REPL stands for Read, Eval, Print, and Loop
+	
+	Read − Reads user's input, parses the input into JavaScript data-structure, and stores in memory.
+
+	Eval − Takes and evaluates the data structure.
+
+	Print − Prints the result.
+
+	Loop − Loops the above command until the user presses ctrl-c twice
+
+
+Underscore Variable
+	You can use underscore (_) to get the last result
+	
+
+dependencies vs devDependencies	
+	
+	dependencies - (All library module used in file ts or js file with import or require)
+		Dependencies that your project needs to run, like a library that provides functions that you call from your code.
+		They are installed transitively (if A depends on B depends on C, npm install on A will install B and C).
+		Example: lodash: your project calls some lodash functions.
+
+	devDependencies (Supporting module which not require on live like jasmine,karma, tslint)
+		Dependencies you only need during development or releasing, like compilers that take your code and compile it into javascript, test frameworks or documentation generators.
+		They are not installed transitively (if A depends on B dev-depends on C, npm install on A will install B only).
+		Example: grunt: your project uses grunt to build itself.	
+
+How to handle asynchronous in node js 
+	using callback and promise, Event emitter
+	
+What is Callback?
+	Callback is an asynchronous equivalent for a function
+	
+	
+What is Event-Driven Programming? means emit and listen to events.
+	Node.js is a single-threaded application, but it can support concurrency via the concept of event and callbacks.
+	
+	event.emit
+	event.on
+
+	In Node Application, any async function accepts a callback as the last parameter and a callback function accepts an error as the first parameter
+	
+What are Streams?
+
+	Streams are objects that let you read data from a file or write data to a file in continuous fashion. In Node.js, there are four types of streams −
+
+		Readable − Stream which is used for read operation.
+		Writable − Stream which is used for write operation.
+		Duplex − Stream which can be used for both read and write operation.
+		Transform − A type of duplex stream where the output is computed based on input.
+	
+	Each type of Stream is an EventEmitter instance and throws several events at different instance of times. For example, some of the commonly used events are −
+
+		data − This event is fired when there is data is available to read.
+		end − This event is fired when there is no more data to read.
+		error − This event is fired when there is any error receiving or writing data.
+		finish − This event is fired when all the data has been flushed to underlying system.
+		
+		
+Node.js - Global Objects
+	Node.js global objects are global in nature and they are available in all modules. We do not need to include these objects in our application, rather we can use them directly. These objects are modules, functions, strings and object itself as explained below.
+	
+	__filename : The __filename represents the filename of the code being executed. This is the resolved absolute path of this code file.
+	__dirname: Return parent path of file in which this module added
+	setTimeout
+	clearTimeout(t)
+	setInterval(cb, ms)
+	
+
+Timing Feature in node js - 
+   	setTimeout
+	clearTimeout(t)
+	setInterval(cb, ms)
+	setImmediate() Method:  - Used to call statements after complition of current event loop meand execute it after last statements completed
+
+
+APIs 
+	Application programming interface. 
+		Api which provide connection between two language
+		
+		Ex. Node express api 
+			we can use that in javascript, react js, language
+		2 language - 1.node and 2. javascript
+		
+		
+
+What is REST (REpresentational State Transfer)
+	REST is arcchitecture that we need to follow while developing webpages/website.
+	
+Node.js - RESTful API ()
+	REST stands for REpresentational State Transfer.
+	
+	REST is a software architectural style that defines the set of rules to be used for creating web services. 
+	Web services which follow the REST architectural style are known as RESTful web services. 
+	It allows requesting systems to access and manipulate web resources by using a uniform and predefined set of rules.
+	
+	Interaction in REST based systems happen through Internet’s Hypertext Transfer Protocol (HTTP)
+	
+	HTTP methods
+    
+	GET − This is used to provide a read only access to a resource.
+	PUT − This is used to create a new resource.
+	DELETE − This is used to remove a resource.
+	POST − This is used to update a existing resource or create a new resource.
+	
+	
+	RESTful APIs.
+
+		1	listUsers	GET	    empty Show list of all the users.
+		2	addUser	    POST	JSON String	Add details of new user.
+		3	deleteUser	DELETE	JSON String	Delete an existing user.
+		4	:id	        GET	    empty Show details of a user
+		
+		
+	GET, PUT, DELETE methods are also known as Idempotent methods.	
+
+Node.js runs in a single thread
+
+
+
+Node.js - Scaling Application (with child_process module)
+
+	Node.js runs in a single-thread mode, but it uses an event-driven paradigm to handle concurrency. 
+	
+	It also facilitates creation of child processes to leverage parallel processing on multi-core CPU based systems.
+	
+    Three major ways to create a child process.
+
+		exec − child_process.exec method runs a command in a shell/console and buffers the output.
+		spawn − child_process.spawn launches a new process with a given command.
+		fork − The child_process.fork method is a special case of the spawn() to create child processes.
+
+	The spawn() method returns streams (stdout &stderr) and it should be used when the process returns a volume amount of data.
+
+    Spawn is useful when you want to make a continuous data transfer in binary/encoding format — e.g. transferring a 1 Gigabyte video, image, or log file.
+    Fork is useful when you want to send individual messages — e.g. JSON or XML data messages.
+
+
+	The child process runs separately without blocking the events in parent process. But, it blocks a similar event set to trigger at the same time inside the child process.
+	
+	means if you trigger child process one after another then all process except first one wait for its preceding process to complete.,but it can't block parent main all process.
+
+
+
+	As discussed, whereas the fork() in child-process spawns out a separate NodeJs process, 
+	the worker_threads creates a new thread in the existing NodeJs process with a separate event loop. Therefore, the worker threads are independent but, lighter compared to the child process.
+
+
+	Difference between Worker thread and Child process
+
+		Worker has a shorter startup time as compared to fork.
+		Worker has a faster IPC (inter-process communication) message as compared to fork.
+		Worker uses less memory while fork has a 32MB memory for Node.exe.
+
+	Caveat(limitations) of Child process
+		Only parent to child and child to parent process communication is possible and there is no child to child communication.
+		
+		Separate memory is allocated for each child process which means that there is a time and resource overhead.
+
+cookie-parser
+	Cookie Parser is a middleware of Node JS used to get cookie data.
+	The cookie parser parses cookies and puts the cookie information on req object in the middleware
+
+Body-parser
+
+   Express framewor has no built in support of request body so body-parser require.
+   
+    useful in http post request
+	Body-parser is the Node.js body parsing middleware. It is responsible for parsing the incoming request bodies in a middleware before you handle it.	
+	To handle HTTP POST requests in Express.js version 4 and above, you need to install the middleware module called body-parser.
+    body-parser extracts the entire body portion of an incoming request stream and exposes it on req.body.
+	
+	
+    const bodyParser = require('body-parser');
+
+	// support parsing of application/json type post data
+	app.use(bodyParser.json());
+
+	//support parsing of application/x-www-form-urlencoded post data - Parse form data with onsubmit methods and image and file uploaded from client
+	app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+Content-type
+	Accept header is used by HTTP clients to tell the server which type of content they expect/prefer as response. 
+	Content-type can be used both by clients and servers to identify the format of the data in their request (client) or response (server) and, therefore, help the other part interpret correctly the information.
+	
+	response.setHeader("Content-Type", "text/html"); 
+	
+	The formal name for the value of the Content-Type header is called MIME type.
+	
+MIME type List
+	text/html
+	text/css
+	application/javascript
+	application/json
+	image/jpeg
+	image/png
+
+
+Multer 
+	Multer is a node.js middleware for handling multipart/form-data. which is primarily used for uploading files.
+	
+Differences between SQL and NoSQL
+                            SQL                                     NoSql
+	Data Storage Model ->	Tables with fixed rows and columns  ||  Document: JSON documents, Key-value: key-value pairs, 
+	Examples	       ->   Oracle, MySQL,PostgreSQL            ||  MongoDB,Redis
+    Scalable           ->   Vertical                            ||	Horizontal 	
+	
+
+
+
+
+
+
+Node js Process.nextTick() vs process.immediate()
+
+Express handle file
+
+
+Error handling in Node.js
+	
+	An exception is created using the throw keyword:
+    throw value;
+	
+	
+	Handling exceptions
+	
+		An exception handler is a try/catch statement.
+	
+			try {
+			  // lines of code
+			} catch (e) {}
+
+	
+	
+		Catching uncaught exceptions in Application
+	
+			process.on('uncaughtException', err => {
+			  console.error('There was an uncaught error', err);
+			  process.exit(1); // mandatory (as per the Node.js docs)
+			});
+			
+How to read environment variables from Node.js
+	The process core module of Node.js provides the env property which hosts all the environment variables that were set at the moment the process was started.
+	
+	# .env file
+		USER_ID="239482"
+		USER_KEY="foobar"
+		NODE_ENV="development"
+		
+	require('dotenv').config();
+
+	process.env.USER_ID; // "239482"
+	process.env.USER_KEY; // "foobar"
+	process.env.NODE_ENV; // "development"
+	
+	
+monolithic architecture,
+	A monolithic application is a single-tiered application in which all components are composed as one unit.
+	Imagine you’re building a library management system, and all of the components, like books, users, and their respective services and databases are fused together as one unit. If there is a fault in any one component, the entire system will need to be brought down to correct the error.
+ 
+microservices architecture
+ 
+	In a microservice, each software application feature is separated from the other, in most cases with their respective servers and databases. Applications built with this kind of architecture are loosely coupled, also referred to as distributed applications
+	
+	
+JSON Web Token.
+		Authentication is the process of verifying a user’s identity.
+		A token is an object that can be used to authenticate a user to a server. Tokens contain embedded user data that is used to identify and authenticate the user.
+		
+		What is the JSON Web Token structure?
+			In its compact form, JSON Web Tokens consist of three parts separated by dots (.), which are:
+
+			The token has 3 parts: <header>.<payload>.<signature>
+
+			Header: A JSON(Base64 encoded) that has info about algorithm used(like HS256, RSA) and so on.
+			Payload: A JSON(Base64 encoded) that has info about the user.
+			Signature: A String that was generated using #1 + #2 + “a secret” (that only the server knows), using the algorithm mentioned in #1.
+		
+		jwt.sign(
+            { email: results.email },
+            process.env.ACCESS_TOKEN_SECRET,
+            {
+              expiresIn: "1h",
+            }
+          );
+		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {})
+		
+		
+		Authorization: Bearer <token>
+
+
+		If the token is sent in the Authorization header, Cross-Origin Resource Sharing (CORS) won't be an issue as it doesn't use cookies.
+		
+res.setHeader() 
+	is a native method of Node.js and res.header() is an alias of res.set() method from Express framework.
+	res.setHeader() allows you only to set a singular header and 
+	res.header() will allow you to set multiple headers. So use the one fit with your needs.		
+	
+
+
+
+
+
+
+
+
+Why use cookies?
+	Sometimes I'm a little lazy and because of that I don't feel like constantly sending the jwt in the headers whenever I make a request to the Api. This is where cookies come in, you can send them whenever you make an http request without worry.
+
+	Another reason is if you use localstorage, on the frontend you must ensure that the jwt is removed from localstorage when the user logs out. While using cookies, you just need a route in the api to make an http request to remove the cookie that you have on the frontend.
+
+HTTP
+	HTTP is a stateless protocol, which means that an HTTP request does not maintain state. The server does not know about any previous requests that were sent by the same client.
+
+	HTTP requests should be self-contained. They should include the information about previous requests that the user made in the request itself.
+
+	There are a few ways of doing this, however, the most popular way is to set a session ID, which is a reference to the user information.
+
+	The server will store this session ID in memory or in a database. The client will send each request with this sessions ID. The server can then fetch information about the client using this reference.		
+
+
+
+caret (^) and tilde (~) signs. 
+
+ Using either a caret (^) or a tilde (~) we can specify the latest minor or patch version, respectively. This way you can specify a compatible package version, but still get the latest.
+ 
+ 
+"dependencies": {
+  "express": "~3.9.2"
+}
+
+"dependencies": {
+  "express": "^3.9.2"
+}
+  The numbers (3, 9, and 2) in the above example are referred to as the major, minor and patch numbers from left to right.
+  
+Backward incompatible changes increment the major digit.
+If a new (backward compatible) change is made, then the minor digit gets incremented.
+Simple bug fixes (to existing functionality) increments the patch digit.
+
+4.16.1
+(major).(minor).(patch)
+npm install express@4.16.1 - Will install exact version
++ express@4.16.1
+
+npm install express@~4.16.1 - Will install latest patch version:
++ express@4.16.4
+
+npm install express@^4.16.1 - Will install latest minor version:
++ express@4.17.1
+
+
+
+
+
+SSH Key generation
+
+1)Run this command in cmd
+	ssh-keygen -t ed25519 -C "reactdashboardsshkey"
+2)Check .ssh file in below path
+	C:\Users\Admin\.ssh
+3)Copy that secret key and add it to Gitlab SSH Keys user settings	
+
+
+
+
+
+
+An authentication system based on tokens (JWT or random) stored in cookies is vulnerable to CSRF attacks, because cookies are sent automatically to server in each request and an attacker could build a harmful url link to your site.
+
+https://yoursite.com/delete?something=1
+To protect your site it is needed to use a CSRF token that your application must send in the following request (not in a cookie).
+
+
+Alternatively you could store the JWT in localStorage and send it in a Authorization header, then your site is protected against CSRF, but it could be vulnerable to XSS attacks. Take in account always the security considerations of the technical solution you choose
+
+
+
+ cookie: {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: true,
+      maxAge: 1000 * 60 * 10, // Time is in miliseconds
+    },
+	
+	httpOnly: true|false <-- If false then client side browser can read by documents.cookie, if true then browser can't read it
+	
+	
+	
+Cookie Flags
+	The following is a list of the attributes that can be set for each cookie and what they mean:
+
+	secure – this attribute tells the browser to only send the cookie if the request is being sent over HTTPS.
+	HttpOnly – this attribute is used to help prevent attacks such as cross-site scripting, since it does not allow the cookie to be accessed via JavaScript.
+
+
+withCredentials
+
+	XMLHttpRequest responses from a different domain cannot set cookie values for their own domain unless withCredentials is set to true before making the request, regardless of Access-Control- header values.
+	
+	This never affects same-site requests.
+	
+	
+	
+Cross-Site Scripting (XSS) attacks are all about running JavaScript code on another user's machine.
+
+This achieved by "injecting" some malicious JavaScript code into content that's going to be rendered for visitors of a website. 
+Every visitor is then going to execute that malicious code and that's where the bad things start.	
+
+But first things first: How could such malicious code be injected?
+ 
+ 1)Trick 1 for XSS attack
+	<li class="message-item">
+	  <div class="message-image">
+		<img
+		  src="invalid-page.com/no-image!jpg"
+		  onerror="const token = localStorage.getItem("token")"
+		  alt="Test"
+		/>
+	  </div>
+	  <p>Test</p>
+	</li>
+  
+ 2)Trick 2 for XSS attack
+	<script>
+	 alert('Hacked!');
+	 // ... do more bad things
+	 // e.g. send a fetch() request to steal data
+	</script>
+
+
+ // How to prevent
+ 
+  Always sanitize user-generated content before storing and serving it!
+  
+  
+  
+  
+  
+ CSRF
+
+Using the double submit cookie strategy
+ With this strategy, the server stores the matching token's value in a cookie instead of keeping it in the server session. 
+ It sends the CSRF token's value to the browser in the hidden field and in the cookie. When the server receives a request, it just needs to check if the cookie's value and the hidden field value match. 
+ 
+ 
+Angular or axios will add the X-XSRF-TOKEN header only if the XSRF-TOKEN cookie was generated server-side with the following options:
+
+Path = /
+httpOnly = false (this is very important, and fully undocumented) 

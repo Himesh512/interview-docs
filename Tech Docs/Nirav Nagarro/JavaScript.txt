@@ -1,0 +1,1071 @@
+------------------------------------------------------------------
+JavaScript
+------------------------------------------------------------------
+What is JavaScript
+	JavaScript is a lightweight, interpreted, object-oriented programming language with first-class functions most commonly known as a scripting language for web pages.
+
+What is OOJS
+	Object Oriented JavaScript.
+	
+
+What is prototype.
+	prototype property is created when a function is declared.
+	function Person(dob){
+		this.dob = dob
+	}; 
+	
+	A prototype is an object, where it can add new variables and methods to the existing object.
+	
+	Prototype is a base class for all the objects, and it helps us to achieve the inheritance.
+
+		
+
+What are the OOPS Concepts in JavaScript?
+	1)Class, Objects
+	2)Encapsulation
+		Encapsulation is a means of binding data variables and methods together in a class. Only objects of the class can then be allowed to access these entities
+	3)Inheritance
+		Inheritance is the process by which one class inherits the functions and properties of another class
+	4)Polymorphism.
+		One function can perform many task . we can achieve through Method Overloading, and Method Overriding.
+	5)Abstraction - Abstraction means showing only the relevant details to the end-user and hiding the irrelevant features that serve as a distraction.
+		.For example, during an ATM operation, we only answer a series of questions to process the transaction without any knowledge about what happens in the background between the bank and the ATM.
+		Ex. Class we have private methods and variable act as Abstraction.
+
+What is function overloading in JavaScript?
+	Same function name with different arguments.
+	
+What is function overriding in JavaScript?	
+	Same function name with same arguments.
+	
+	
+JS Web APIs
+	API stands for Application Programming Interface.
+	
+	History API
+		window.history.back();
+		window.history.forward();
+		window.history.go(-2);
+
+	Web Storage API
+		localStorage
+			Allows to save key/value pairs in a web browser. Stores the data with no expiration date
+			localStorage.setItem("name", "John Doe");
+			localStorage.getItem("name");
+		
+		sessionStorage
+			Allows to save key/value pairs in a web browser. Stores the data for one session
+			sessionStorage.getItem("name");
+			sessionStorage.setItem("name", "John Doe");
+
+	Web Workers API and Service Worker
+		A web worker is a JavaScript running in the background, without affecting the performance of the page.
+		if (typeof(Worker) !== "undefined") {
+		  // Yes! Web worker support!
+		  // Some code.....
+		} else {
+		  // Sorry! No Web Worker support..
+		}
+		
+		 w = new Worker("demo_workers.js");
+		 w.terminate();
+	
+	Fetch API
+		The Fetch API interface allows web browser to make HTTP requests to web servers.
+		fetch(file)
+			.then(x => x.text())
+			.then(y => myDisplay(y));
+			
+	Geolocation API
+		The HTML Geolocation API is used to get the geographical position of a user.
+		getCurrentPosition() method is used to return the user's position.
+
+
+How To modify the URL of page without reloading the page?
+	window.history.pushState('page1', 'This is page1 Title', '/index.htm');
+
+
+What Types Of Boolean Operators In Javascript?
+
+	There are three types of Boolean operators as given below.
+
+	AND (&&) operator, 
+	OR (||) operator and 
+	NOT (!) Operator
+
+
+Is Javascript Case Sensitive?
+	Yes JavaScript is case sensitive because a function str is not equal to Str.
+
+What Is a Constructor?
+	Constructor is a special function in a class which initializes an object with some set of default and/or sent-in values.
+
+What Is An Object?
+	The object is a collection of properties and each property associated with the name-value pairs. The object can contain any data types (numbers, arrays, objects etc.)
+
+	The example as given below
+	Var myObject= {empId : “001”, empCode :”X0091”};	
+	
+What Is Typeof Operator?
+	The typeof operator is used to find the type of variables.
+
+	null
+		is an assigned value. It means nothing. 
+
+	undefined
+		It means a variable declared, but no value has been assigned a value.
+
+	typeof undefined;
+		undefined
+
+	typeof null;
+		“object” 
+		
+	!undefined	 = true
+	!null = true
+	
+	
+What Are Different Ways Of Creating An Object?
+	var emptyObj= {};
+	Var obj = new Object();
+	var a = Object.create();
+	
+	
+What are the different ways to make an object non-extensible
+
+	Object.preventExtensions
+	Object.seal
+	Object.freeze
+
+	var newObject = {};
+
+	Object.preventExtensions(newObject); // Prevent objects are non-extensible
+	Object.isExtensible(newObject); // false
+
+	var sealedObject = Object.seal({}); // Sealed objects are non-extensible
+	Object.isExtensible(sealedObject); // false
+
+	var frozenObject = Object.freeze({}); // Frozen objects are non-extensible
+	Object.isExtensible(frozenObject); // false
+	
+What are different way to clone object.
+	var a = {name:'nirav',address:{city:'ahmedabad',country:'india'}}
+	
+	By using assign method
+		var b = Object.assign(a)
+	By using JSON methods
+		JSON.parse(JSON.stringify(a))
+		
+	Deep clone using
+		_.clone()
+		$.extent() - Jquery extend methods
+
+What is ECMAScript?
+	It is a JavaScript new version.
+
+ES5(ECMAScript 2009) vs ES6 (ECMAScript 2015)
+                                  
+	ES5 was introduced in 2009.
+		ES6 was introduced in 2015.  
+	ES5 supports primitive data types that are string, number, boolean, null, and undefined.
+	   Es6 introduced a new primitive data type 'symbol' for supporting unique values.
+	In ES5, we could only define the variables by using the var keyword.
+	   In ES6, there are two new ways to define variables that are let and const.
+	In ES5, there is a use of for loop to iterate over elements.
+		ES6 introduced the concept of for...of loop to perform an iteration over the values of the iterable objects.
+		
+		ES6 introduced spread and rest operator
+		ES6 introduced Arrow Functions
+		ES6 introduced Template Literal (`)
+		ES6 introduced Promises
+		ES6 introduced Destructuring
+		ES6 introduced Ternary Operator
+		ES6 introduced Import and Export (ES5 require are use) 
+		ES6 introduced .map(),.filter() array method.
+
+Define let and const and var keywords.
+	let keyword are mutable and block-scoped
+	the const keyword are immutable and block-scoped
+	var keyword are mutable and not a block-scoped
+	
+	mutable, i.e., the values of the variable can be changed
+	
+	The main difference is that the scope of a var variable is the entire enclosing function.
+	
+	No re-declaring -let while we can re-declare var
+	Ex.
+	    var  a;
+		var a; // Works fine.
+
+		let b;
+		let b; // SyntaxError: Identifier 'b' has already been declared
+		
+	var can be global scope if declare outside function
+	
+	var has function scope
+	let and const has block scope	
+	
+	
+	ES6 added the let and const keywords to create variables in JavaScript. Variables declared with let or const are block-scoped. This means that they can only be accessed within their enclosing block - a region enclosed by curly braces { }.
+	
+
+
+Spread operator in ES6	(... annotation)
+	When using spread, you are expanding a single variable into more
+		var abc = ['a', 'b', 'c'];
+		var def = ['d', 'e', 'f'];
+		var alpha = [ ...abc, ...def ];
+		console.log(alpha)// alpha == ['a', 'b', 'c', 'd', 'e', 'f'];
+
+When using rest arguments, you are collapsing all remaining arguments of a function into one array (... annotation)
+	function sum( first, ...others ) {
+		for ( var i = 0; i < others.length; i++ )
+			first += others[i];
+		return first;
+	}
+	console.log(sum(1,2,3,4))// sum(1, 2, 3, 4) == 10;
+	
+	
+	Rest parameter is used to take a variable number of arguments and turns into an array while the spread operator takes an array or an object and spreads it
+	Rest parameter is used in function declaration whereas the spread operator is used in function calls.
+	
+	
+What is Destructuring?
+	Destructuring is taking an object and breaking it down into it’s individual parts.
+		let myObj = {name: “Luke”, age: 25, hobbies: “music”};
+		let { name, age, hobbies } = myObj;
+	
+	Destructuring also works for arrays
+		let arr = [‘Jim’, ‘Bob’, ‘Sarah’, ‘Cassie’];
+		let [ jim, bob, sarah, cassie ] = arr;
+
+What are the default parameters?
+		By using the default parameters, we can initialize named parameters with default values if there is no value or undefined is passed.
+		var show = (a, b=200) => {  
+			console.log(a + " " + b);  
+		}  
+		show(100);  
+		
+What do you mean by IIFE (Immediately invoked function expressions)?
+		An Immediate-Invoked Function Expression (IIFE) is a function that is executed instantly after it's defined. This pattern has been used to alias global variables, make variables and functions private and to ensure asynchronous code in loops are executed correctly.
+		
+		
+		for (var i = 1; i <= 5; i++) {
+			setTimeout(function () {
+				console.log('I reached step ' + i);
+			}, 1000 * i);console.log("outside")
+		}
+		
+		output : I reached step 6,I reached step 6,I reached step 6,I reached step 6,I reached step 6,I reached step 6
+		
+What do you understand by the term Hoisting in JavaScript?
+  It is JavaScript's default behavior, which is used to move all the declarations at the top of the scope before the execution of code.
+  All variables declare the first part of function.	
+  
+  
+Block Scope
+	A block scope is the area within if, switch conditions or for and while loops. Generally speaking, whenever you see {curly brackets}, it is a block. 
+
+Lexical Scope
+	Another point to mention is the lexical scope. Lexical scope means the children scope have the access to the variables defined in the parent scope.
+
+Function Scope
+	Whenever you declare a variable in a function, the variable is visible only within the function. You can't access it outside the function. 	
+	
+	
+	
+Variable hosting
+	
+		console.log(shape); 
+		// OUTPUT :   undefined
+		
+		var shape = "square";
+		console.log(shape);
+		// OUTPUT : "square"
+		
+		
+		// Behind schene hoested var shape
+		
+		var shape;
+		console.log(shape); 
+		// OUTPUT :   undefined
+		
+		var shape = "square";
+		console.log(shape);
+		// OUTPUT : "square"
+		
+		The JavaScript engine treats all variable declarations using “var” as if they are declared at the top of a functional scope(if declared inside a function) or global scope(if declared outside of a function) regardless of where the actual declaration occurs. This essentially is “hoisting”.
+		
+		If you’re coming from C-based languages, you’d expect an error to be thrown when the first console.log is called since the variable shape hadn’t been defined at that point
+		But the JavaScript interpreter looks ahead and “hoists” all variable declarations to the top, and the initialization remains in the same spot.
+		
+		
+		This is because if/else blocks don’t create a local scope as seen in other languages.
+		
+	
+What is Function Hoisting
+	There are 2 ways of creating functions in JavaScript, through Function Declaration and through Function Expression. 
+	
+	Function Declaration
+	
+		The function declaration defines a function with the specified parameters.
+			Syntax:
+
+			function name(param1, param2, ...) {  [statements]}
+	
+	
+			In JavaScript, function declarations hoist the function definitions.
+
+			Therefore, these functions can be used before they are declared.
+	
+	Function Expression
+	
+		The function keyword can also be used to define a function inside an expression.
+		Syntax:
+
+		const myFunction = function [name](param1, param2, ...) {  [statements]}
+		
+		Function expressions in JavaScript are not hoisted.
+	
+	
+	Arrow Functions
+
+	let name_of_function = (parameters) => ...
+
+	Advantages of using Arrow Function:
+		This arrow function reduces lots of code and makes the mode more readable.
+		Arrow function syntax automatically binds “this” to the surrounding code’s context.
+
+	Limitations of using Arrow functions: 
+
+		An arrow function doesn’t have its own bindings with this or super.
+		An Arrow function should not be used as methods.
+		An arrow function can not be used as constructors.
+		An arrow function can not use yield within its body.
+		Arrow function cannot be suitable for call apply and bind methods.	
+		
+
+Define closure in JavaScript.(Lexical scope)
+	inner scope access property and function of outer scope.		
+			
+ES6 Set collection
+	A set is a data structure that allows you to create a collection of unique values.
+	Set is the collection of values similar to arrays, but it does not contain any duplicates.
+	var s = new Set("val1","val2","val3");  
+	
+	let colors = new Set(['Green', 'Red', 'Orange', 'Yellow', 'Red']);  
+	console.log(colors);  
+	Set { 'Green', 'Red', 'Orange', 'Yellow' }
+
+ES6 Map collection
+
+
+map creates a new array by transforming every element in an array individually. 
+	[1,2,3,5,6].map( item => {
+		return item + 10;
+	})
+	
+	// Output =>  [11, 12, 13, 15, 16]
+	
+	[{id:1,name:'Nirav'},{id:2,name:'Ansh'},{id:3,name:'Khyati'}].map(item=>{
+		return item.name;
+	})
+	
+	// Output => ['Nirav', 'Ansh', 'Khyati']
+	
+filter creates a new array by removing elements that don't belongs to its match criteria. 
+	[{id:1,name:'Nirav'},{id:2,name:'Ansh'},{id:3,name:'Khyati'}].filter(item=>{
+		return item.id > 1;
+	})
+	
+	// Output => [{id:2,name:'Ansh'},{id:3,name:'Khyati'}]
+
+reduce, on the other hand, takes all of the elements in an array and reduces them into a single value.
+	
+	const total = [1, 2, 3, 4, 5].reduce(function (previous, current) {
+		return previous + current;
+	}, 0);
+	
+	// OR
+	
+	[1, 2, 3, 4, 5].reduce((previous, current) => previous + current, 0);
+    
+	console.log(total); // 15
+
+Find Method
+	const number = [1,2,3,4,5,34].find(function(item){
+		return item === 34
+	})
+    console.log(number); // 34
+
+
+Difference between promise and observable
+	A Promise handles a single event while Observable handles multiple events.   
+	While a Promise starts immediately, an Observable only starts if you subscribe to it. This is why Observables are called lazy.
+	Observable allows to cancel the subscription, while a Promise not
+	Promises are used to overcome the problem of Callback hell.
+	
+
+Promise Object Properties(State)
+	A JavaScript Promise object can be:
+
+	Pending
+	Fulfilled
+	Rejected
+
+Observable Object Properties,
+   next,
+   error	
+	
+promise.all vs promise.race vs promise.any
+	promise.all() -> resolved only if all input promise has been resolved(Its wait for all promise to complete).
+	
+	Promise.race() ->  is settled as soon as any of the promises you feed it settle, whether they are fulfilled or rejected.
+
+    Promise.any is settled as soon as any of the promises you feed it is fulfilled or they are all rejected, in which case it's rejected with an AggregateError.
+ 
+What is Callback hell?
+   Multiple nested callback called Callback hell.
+
+
+What are generator functions?
+
+	Introduced in ES6 version, generator functions are a special class of functions.
+
+	They can be stopped midway and then continue from where it had stopped.
+
+	Generator functions are declared with the function* keyword instead of the normal function keyword:
+
+	function* genFunc(){
+	  // Perform operation
+	}
+	
+	function* generator(i) {
+	  yield i;
+	  yield i + 10;
+	}
+
+	const gen = generator(10);
+
+	console.log(gen.next().value);
+	// expected output: 10
+
+	console.log(gen.next().value);
+    // expected output: 20
+
+	
+	
+	Calling a generator function does not execute its body immediately; an iterator object for the function is returned instead. When the iterator's next() method is called, the generator function's body is executed until the first yield expression, which specifies the value to be returned from the iterator or, with yield*, delegates to another generator function. 
+
+
+Define Babel.
+	Babel is one of the popular transpilers of JavaScript. It is  converting the ES6 plus code into the backward-compatible version of JavaScript.
+	
+
+Define anonymous function
+	var display=function()  
+	{  
+	  alert("Anonymous Function is invoked");  
+	}  
+	display();  
+	
+	
+	
+What are the different data types present in JavaScript?
+	Primitive data types - primitive data types can store only a single value. Example = String, Number, Boolean, Undefined, Null, Symbol, typeof
+    non-primitive data types -  To store multiple and complex values. Example - Object, Array
+
+
+What's the difference between event.preventDefault() and event.stopPropagation() methods in JavaScript?
+	event.preventDefault() method is used to prevent the default behavior of an element.
+		For example: If you use it in a form element, it prevents it from submitting. If used in an anchor element, it prevents it from navigating. 
+	event.stopPropagation() method is used to stop the propagation of an event or stop the event from occurring in the bubbling or capturing phase.	
+
+
+
+Event capturing and Event bubbling
+	Event Capturing?
+		Event capturing is the scenario in which the events will propagate, starting from the wrapper elements down to the target element that initiated the event cycle.	
+		
+	Event bubbling
+		When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
+		To stop bubbling
+			event.stopPropagation() method is used to stop the propagation of an event or stop the event from occurring in the bubbling or capturing phase.	
+    
+
+The standard DOM Events describes 3 phases of event propagation:
+
+	Capturing phase – the event goes down to the element.
+	Target phase – the event reached the target element.
+	Bubbling phase – the event bubbles up from the element.
+
+
+What is negative infinity?
+	Dividing the negative number by zero
+
+What is infinity?  
+	Dividing the number by zero
+
+Comparison
+	true == 1 =  true == '1'  -> Yes
+	false == 0 = false == '0' -> Yes
+	
+Difference between “ == “ and “ === “ operators.
+	Both are comparison operators. The difference between both the operators is that,“==” is used to compare values whereas, “ === “ is used to compare both values and types.
+
+Explain Implicit Type Coercion in javascript.
+
+	Implicit type coercion in javascript is automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.
+
+	Example 1:
+	var x = 3;
+	var y = "3";
+	x + y // Returns "33" 
+
+
+Explain Higher Order Functions in javascript.
+	Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
+		function abc(){
+			 return function() {
+				return "Do something";
+			  }
+		}
+	
+	
+Explain call(), apply() and bind() methods.
+		call() and apply() are used to call functions .
+		
+		
+		
+		Call: The call() method invokes a function with a given this value and arguments provided one by one (Call the function on object with argument as comma seprated)
+		
+		var employee1 = {firstName: 'John', lastName: 'Rodson'};
+		var employee2 = {firstName: 'Jimmy', lastName: 'Baily'};
+
+		function invite(greeting1, greeting2) {
+			console.log(greeting1 + ' ' + this.firstName + ' ' + this.lastName+ ', '+ greeting2);
+		}
+		
+		// CALL
+		invite.call(employee1, 'Hello', 'How are you?'); // Hello John Rodson, How are you?
+		invite.call(employee2, 'Hello', 'How are you?'); // Hello Jimmy Baily, How are you?
+		
+		Apply - (Call the function on object with argument as array)
+		// APPLY 
+		Apply: Invokes the function with a given this value and allows you to pass in arguments as an array
+
+		invite.apply(employee1, ['Hello', 'How are you?']); // Hello John Rodson, How are you?
+		invite.apply(employee2, ['Hello', 'How are you?']); // Hello Jimmy Baily, How are you?
+		
+		// Bind
+		Same as call but we can execute it later
+		var call = invite.bind(employee1, 'Hello', 'How are you?'); // Hello John Rodson, How are you?
+		call();	
+
+What is the difference between slice and splice
+	Slice	                                        Splice
+	Doesn't modify the original array(immutable)	Modifies the original array(mutable)
+
+	S LICE = Gives part of array & NO splitting original array
+
+    SP LICE = Gives part of array & SPlitting original array
+	
+	Ex.
+	var a = [1,2,3]
+	a.slice(2) => [3]
+	a = [1,2,3] - Not change original array(immutable)
+    
+	
+	var a = [1,2,3]
+	a.splice(2) => [3]
+	a = [1,2] - Change original array(mutable)
+	
+	
+		
+What is recursion in a programming language?	
+		Recursion is a technique to iterate over an operation by having a function call itself repeatedly until it arrives at a result.
+	
+
+How do you check whether an object can be extendable or not	
+	The Object.isExtensible() method is used to determine if an object is extendable or not. i.e, Whether it can have new properties added to it or not.
+
+	const newObject = {};
+	console.log(Object.isExtensible(newObject)); //true
+	
+
+What is the difference between == and === operators
+
+	0 == false   // true
+	0 === false  // false
+	1 == "1"     // true
+	1 === "1"    // false
+	null == undefined // true
+	null === undefined // false
+	'0' == false // true
+	'0' === false // false
+
+What is a first order function
+
+	First-order function is a function that doesn’t accept another function as an argument and doesn’t return a function as its return value.
+    const firstOrder = () => console.log ('I am a first order function!');
+
+What is a higher order function
+
+	Higher-order function is a function that accepts another function as an argument or returns a function as a return value or both.
+
+	const firstOrderFunc = () => console.log ('Hello, I am a First order function');
+	const higherOrder = ReturnFirstOrderFunc => ReturnFirstOrderFunc();
+	higherOrder(firstOrderFunc);
+	
+
+
+What is a pure function
+	A Pure function is a function where the return value is only determined by its arguments without any side effects. i.e, If you call a function with the same arguments 'n' number of times and 'n' number of places in the application then it will always return the same value.
+
+
+What is memoization
+
+	Memoization is a programming technique which attempts to increase a function’s performance by caching its previously computed results. Each time a memoized function is called, its parameters are used to index the cache. If the data is present, then it can be returned, without executing the entire function. Otherwise the function is executed and then the result is added to the cache.
+
+
+
+
+prompt box
+
+	A prompt box is used if you want the user to input a value.
+	When a prompt box pops up, the user will have to click either "OK" or "Cancel" to proceed.
+	Ex.. prompt("<title>What's your favorite drink?", "<default value>Coca-Cola");
+	
+	
+alert() 
+	method displays an alert box with a message and an OK button.
+	The alert() method is used when you want information to come through to the user.	
+	The alert box takes the focus away from the current window, and forces the user to read the message.
+	
+	Ex.. alert("Hello! I am an alert box!!");
+
+Confirm()
+	The confirm() method displays a dialog box with a message, an OK button, and a Cancel button.
+    The confirm() method returns true if the user clicked "OK", otherwise false.
+	
+How to check performance of website in browser
+    Google Chrome DevTools - Performance tab
+
+
+Authentication vs Authorization
+  Authentication - Sign in user - validate user	
+  Authorization - Check access of user in different screen
+  
+
+Difference between POST, PUT, PATCH.... 
+	POST - Create NEW record
+	
+	PATCH - update - Partial update to a resource
+
+	PUT - If the record exists, update else, create a new record
+
+	GET - read
+
+	DELETE - delete
+	
+	POST is always for creating a resource ( does not matter if it was duplicated )
+	PUT is for checking if resource exists then update, else create new resource
+	PATCH is always for Partial updating a resource
+
+JavaScript linters	
+    JavaScript linters are JSHint, JSLint, and ESLint	
+	
+What Is Web Accessibility?
+	It ensures all users are able to perceive, understand, navigate, and interact with a website and encompasses all disabilities which may affect how a user experiences your website.
+	
+	An accessible website helps all users:
+
+		Easily navigate the site.
+		Improve their experience.
+		Find information they are looking for.
+	
+	1. Page Titles
+		Page titles are used to provide context and help users to understand what the webpage is about, as well as appearing as the main headline in search results.
+	2. Headings
+		H1 tag to provide an overview of the main content on the page, while H2-H6 tags are used to further define the structure of a page.
+	3. Anchor Text	
+		Anchor text is used to describe the content that will be found on the page being linked to. It can be used to describe the purpose of the page and help users determine whether they want to click the link to visit the destination page.
+	5. Breadcrumb Links
+		Used as a secondary navigation, breadcrumbs allow users to navigate back to their original page or top level content, and trace back through the path they took to navigate to the page they are on.
+		
+	6. Alt Text
+		In case of image not load in rowser text should be display about image
+		
+	7.Use the meta description tag,Meta keywords tag:
+		<meta name="description" content="Brandon's Baseball Cards provides a large selection of vintage and modern baseball cards for sale. We also offer daily baseball news and events.">
+		
+JavaScript security Vulnerabilities		
+
+	UNINTENDED SCRIPT EXECUTION -  cross-site scripting (XSS) - Different end point 
+		IN javascript Document Object Model (DOM) on a web page, allowing scripts to be embedded and executed on client computers across the web.
+		
+		To prevent XSS attacks, developers should apply sanitization—a combination of escaping, filtering, and validating string data—when handling user input and output from the server.
+		
+	ESCAPING/ENCODING USER INPUT
+		Encrypt: Use HTTPS/SSL to encrypt data exchanged between the client and the server.
+
+    RELIANCE ON CLIENT-SIDE VALIDATION ALONE 
+		If in your website only client side validation then the attacker might bypass that validation and send data to server, to overcome this issue , we need to use server side validation also to ensure valid data to be stored in the database.
+	
+	STEALING SESSION DATA
+		Client-side browser script can be very powerful in that it has access to all the content returned by a web application to the browser. This includes cookies that could potentially contain sensitive data, including user session IDs. In fact, a common exploit of XSS attacks is to send the user’s session ID tokens to the attacker so they can hijack the session.
+		
+		To prevent this, most browsers now support the Http-Only attribute on cookies. When the server sets a cookie on the browser, setting the Http-Only attribute tells the browser not to allow access to the cookie from the DOM. This prevents client-side script-based attacks from accessing the sensitive data stored in those cookies.
+		
+	Cross-site request forgery (CSRF)
+		Hackers can also implement their own web pages and have them perform malicious requests to other sites in the background when the user opens it. They can also use social media, forums, and other platforms to post malicious links or other content that forces browsers to make unnoticed calls to other sites using the user’s session cookies.
+		
+		To overcome this issue Tokens should be generated(CSRF token) for each form on the website upon session establishment and should be sent together with each request while the user is present on the website.
+		
+		CSRF token - Token which authentic user 
+		
+	Ensure secure cookie transmission	
+	
+	Minify & Uglify Your Code
+	Lint Your Code
+		Linters perform static analysis on your codebase. It helps to establish quality and avoid common pitfalls. Since quality goes hand in hand with security, Linting helps to reduce the security risks. Few popular tools that we use for JavaScript are as follows.
+			JSLint
+			JSHint
+			ESLint
+
+
+Improve javascript site performance
+	Remove unused JavaScript code
+	Minify Your JavaScript Code
+		Use Gzip compression
+			Imagine if instead of sending a big file to the browser, your web server could send a zipped file to make it lighter. That way, the browser would finish downloading the file sooner. 
+	Cache mostly used data		
+	Keep DOM interaction to a minimum
+	Load only used file on Load time
+	Use asynchronous programming
+	Use Web worker for heavy operations
+
+What is a JavaScript module bundler?
+		A bundler is a development tool that combines many JavaScript code files into a single one that is production-ready loadable in the browser. 
+		
+		Webpack is currently the most popular JavaScript module bundle
+		 
+			module.exports = {
+			  entry: {
+				app: './src/app.js',
+				search: './src/search.js',
+			  },
+			  output: {
+				filename: '[name].js',
+				path: __dirname + '/dist',
+			  },
+			  module: {
+				rules: [
+				  {
+					test: /\.css$/,
+					use: [
+					  // [style-loader](/loaders/
+					  style-loader)
+					  { loader: 'style-loader' },
+					  // [css-loader](/loaders/css-loader)
+					  {
+						loader: 'css-loader',
+						options: {
+						  modules: true
+						}
+					  },
+					  // [sass-loader](/loaders/sass-loader)
+					  { loader: 'sass-loader' }
+					]
+				  }
+				]
+			  }
+			};
+
+			
+			
+		Webpack Core Concepts:
+		
+
+			Entry 
+				Entry point of Webpack.
+			Output
+				Generated output file with which name and which location
+			Loaders
+				Loaders can transform files from a different language (like TypeScript) to JavaScript
+			Plugins
+			Mode
+			Browser Compatibility
+		
+JavaScript design pattern
+	 JavaScript design patterns assist developers to write organized, beautiful and well-structured codes.
+	
+	
+	// Constructor Design pattern
+	
+	    Constructor initializes the class with default values.
+	
+		JavaScript doesn’t support native classes(native classes = Class abc{}), but it does support constructors through the use of a “new” keyword prefixed to a function call.(var person1 = new Person("Bob", 38, true);)
+		
+		In JavaScript we can use the function as a constructor and initialize its properties.(function Person() act as constructor)
+		
+		// we define a constructor for Person objects
+		function Person(name, age, isDeveloper) {
+			this.name = name;
+			this.age = age;
+			this.isDeveloper = isDeveloper || false;
+		}
+		
+		// we extend the function's prototype
+		Person.prototype.writesCode = function() {
+			console.log(this.isDeveloper? "This person does write code" : "This person does not write code");
+		}
+
+		// creates a Person instance with properties name: Bob, age: 38, isDeveloper: true and a method writesCode
+		var person1 = new Person("Bob", 38, true);	
+		
+		person1.writesCode();
+		
+		// prints out: This person does write code
+		
+	
+	// Module Pattern	(Private, Public scope) we can achieve abstraction
+	
+		 JavaScript does not support access modifiers. In a classical OOP language, a user defines a class and determines access rights for its members. Since JavaScript in its plain form supports neither classes nor access modifiers, JavaScript developers figured out a way to mimic this behavior when needed.
+		 
+		 // we  used an immediately invoked function expression
+		// to create a private variable, counter
+		var counterIncrementer = (function() {
+			var counter = 0;
+
+			return function() {
+				return ++counter;
+			};
+		})();
+
+		// prints out 1
+		console.log(counterIncrementer());
+		// prints out 2
+		console.log(counterIncrementer());
+		// prints out 3
+		console.log(counterIncrementer());
+
+		As you can see, by using the IIFE, we have tied the counter variable to a function which was invoked and closed but can still be accessed by the child function that increments it
+		
+		
+		Using the closures, we can create objects with private and public parts. These are called modules and are very useful whenever we want to hide certain parts of an object and only expose an interface to the user of the module
+		
+		// through the use of a closure we expose an object
+		// as a public API which manages the private objects array
+		var collection = (function() {
+			// private members
+			var objects = [];
+
+			// public members
+			return {
+				addObject: function(object) {
+					objects.push(object);
+				},
+				removeObject: function(object) {
+					var index = objects.indexOf(object);
+					if (index >= 0) {
+						objects.splice(index, 1);
+					}
+				},
+				getObjects: function() {
+					return JSON.parse(JSON.stringify(objects));
+				}
+			};
+		})();
+
+		collection.addObject("Bob");
+		collection.addObject("Alice");
+		collection.addObject("Franck");
+		// prints ["Bob", "Alice", "Franck"]
+		console.log(collection.getObjects());
+		collection.removeObject("Alice");
+		// prints ["Bob", "Franck"]
+		console.log(collection.getObjects());
+		
+		
+		
+	// Revealing Module Pattern
+	
+		This pattern is an improvement made to the module pattern as illustrated above. The main difference is that we write the entire object logic in the private scope of the module and then simply expose the parts we want to be public by returning an anonymous object.
+ 		
+		// we write the entire object logic as private members and
+		// expose an anonymous object which maps members we wish to reveal
+		// to their corresponding public members
+		var namesCollection = (function() {
+			// private members
+			var objects = [];
+
+			function addObject(object) {
+				objects.push(object);
+			}
+
+			function getObjects() {
+				return JSON.parse(JSON.stringify(objects));
+			}
+
+			// public members
+			return {
+				addName: addObject,
+				removeName: removeObject,
+				getNames: getObjects
+			};
+		})();
+
+		namesCollection.addName("Bob");
+
+		// prints ["Bob", "Alice", "Franck"]
+		console.log(namesCollection.getNames());
+
+		// prints ["Bob", "Franck"]
+		console.log(namesCollection.getNames());
+		
+	// Singleton Pattern
+		The singleton pattern is used in scenarios when we need exactly one instance of a class. For example, we need to have an object which contains some configuration for something. In these cases, it is not necessary to create a new object whenever the configuration object is required somewhere in the system.
+		
+		var singleton = (function() {
+			// private singleton value which gets initialized only once
+			var config;
+
+			function initializeConfiguration(values){
+				this.randomNumber = Math.random();
+				values = values || {};
+				this.number = values.number || 5;
+				this.size = values.size || 10;
+			}
+
+			// we export the centralized method for retrieving the singleton value
+			return {
+				getConfig: function(values) {
+					// we initialize the singleton value only once
+					if (config === undefined) {
+						config = new initializeConfiguration(values);
+					}
+
+					// and return the same config value wherever it is asked for
+					return config;
+				}
+			};
+		})();
+
+		var configObject = singleton.getConfig({ "size": 8 });
+		// prints number: 5, size: 8, randomNumber: someRandomDecimalValue
+		console.log(configObject);
+		var configObject1 = singleton.getConfig({ "number": 8 });
+		// prints number: 5, size: 8, randomNumber: same randomDecimalValue as in first config
+		console.log(configObject1);
+		
+		
+	// Observer Pattern
+
+		we have two main parts of the pattern. The first is a subject and the second is observers.
+		
+	// Prototype Pattern	(We can achieve inheritance)
+		JavaScript does not support classes in its native form. Inheritance between objects is implemented using prototype-based programming.
+		
+		var personPrototype = {
+			sayHi: function() {
+				console.log("Hello, my name is " + this.name + ", and I am " + this.age);
+			},
+			sayBye: function() {
+				console.log("Bye Bye!");
+			}
+		};
+
+		function Person(name, age) {
+			name = name || "John Doe";
+			age = age || 26;
+
+			function constructorFunction(name, age) {
+				this.name = name;
+				this.age = age;
+			};
+
+			constructorFunction.prototype = personPrototype;
+
+			var instance = new constructorFunction(name, age);
+			return instance;
+		}
+
+		var person1 = Person();
+		var person2 = Person("Bob", 38);
+
+		// prints out Hello, my name is John Doe, and I am 26
+		person1.sayHi();
+		// prints out Hello, my name is Bob, and I am 38
+		person2.sayHi();
+
+
+
+
+script tag
+
+	If async is present: The script is downloaded in parallel to parsing the page, and executed as soon as it is available (before parsing completes)
+	If defer is present (and not async): The script is downloaded in parallel to parsing the page, and executed after the page has finished parsing
+	If neither async or defer is present: The script is downloaded and executed immediately, blocking parsing until the script is completed
+
+What is event delegation JavaScript?
+	Capturing and bubbling allow us to implement one of the most powerful event handling patterns called event delegation.
+	
+	Capturing from HTML to target
+	bubbling from target to HTML
+	
+	Binding event listeners to each node is not feasible and affects the performance. For better performance, the event listeners are attached to the parent node.
+
+
+What is Event loop
+	call stack   ----> Broser API(Node api) ----> Event Queue -
+	    <---   event Loop  <----					<------
+	
+	
+	 it constantly checks whether or not the call stack is empty. If it is empty, new functions are added from the event queue. If it is not, then the current function call is processed.
+
+
+
+padStart and padEnd
+	padStart and padEnd are two new methods available on JavaScript strings. As their name implies, they allow for formatting a string by adding padding characters at the start or the end.
+	
+	"Nirav".padStart(16,'@#!') ---> '@#!@#!@#!@#Nirav'
+	
+	"Dog!".padStart(10); // "      Dog!"
+	"Dog!".padEnd(14, ' Woof'); // "Dog! Woof Woof"
+
+
+
+
+Get character From Array 
+ 
+	const string = 'hi there';
+	const usingSplit = string.split('');
+	const usingSpread = [...string];
+	const usingArrayFrom = Array.from(string);
+	const usingObjectAssign = Object.assign([], string)
+
+
+		
+Pass by value or pass by reference ?		
+
+
+The Temporal Dead Zone
+We now know that accessing let or const variables before they’re declared will throw a ReferenceError. 
+This period between entering scope and being declared where they cannot be accessed is called the Temporal Dead Zone.
+
+
+
+// Variable lifecycle
+let a;            // Declaration
+a = 100;          // Assignment
+console.log(a);   // Usage
+
+
+What is the difference between the stack and queue?
+Stack =  LIFO refers to Last In First Out. 
+queue = FIFO refers to First In First Out.
+
+
+Cross-site Scripting vulnerability (XSS) is more of a risk than any CSRF vulnerability because CSRF attacks have a major limitation. 
+CSRF only allows for state changes to occur and therefore the attacker cannot receive the contents of the HTTP response.

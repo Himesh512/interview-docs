@@ -1,0 +1,695 @@
+------------------------------------------------------------------
+Angular
+------------------------------------------------------------------	
+Latest Angular version
+  14
+  
+  Strictly Typed Reactive Forms
+     The Reactive Forms types AbstractControl, FormControl, FormGroup, and FormArray now support a generic parameter which allows for strict typing of the controls. An automatic migration will convert existing usages of these types to special Untyped aliases which preserve the existing behavior.
+  Faster Builds
+  Moving to ESLint from TSLint 
+  
+  
+How to improve angular application performance.
+
+	Split your application into lazy-loaded modules.
+	Use a trackBy function to improve ngFor performance at component level.
+	Use ChangeDetectionStrategy.OnPush whenever required
+	Unsubscribe all observables on Component destroy method
+		If a subscription is not closed the function callback attached to it will be continuously called, this poses a huge memory leak and performance issue.
+
+What are lifecycle hooks in Angular?
+	constructor()
+	ngOnChanges()
+	ngOnInit()
+	ngDoCheck( ) 
+		ngAfterContentChecked( ) 
+		ngAfterViewInit( ) 
+		ngAfterViewChecked( ) 
+	ngOnDestroy( ) 
+	
+What is package json? 	
+	package.json resides at the root of the project.
+	Project start and build script described inside.
+	package.json contains information of all dependencies.
+	
+What is angular.json
+	Project configuration options for build, serve, and test.
+    We can import styles and js files also.
+	Entry point of application also  
+	
+tsconfig.json	
+	The base TypeScript configuration for projects in the workspace.	
+		
+main.ts	
+	The main entry point for your application, Which bootstrap appmodule.		
+
+polyfills.ts	
+	Provides polyfill scripts for browser support like IE, firefox..
+	
+test.ts	
+	The main entry point for your unit tests, with some Angular-specific.
+	
+ng new my-app : This command use to create new workspace.
+
+JIT and AOT	
+	Just-in-Time (JIT),compiles your app in the browser at runtime.
+		(Development -> Build -> App downloaded in Browser -> Angular Parses & Compiles Template)
+	Ahead-of-Time (AOT), compiles your app at build time.
+		(Development -> Angular Parses & Compiles Template -> Build -> App downloaded in Browser)
+	
+	We use JIT in development mode while AOT is for production mode.
+	Bundle size is higher in JIT compare to AOT.
+	
+	By default, angular builds and serves the application using JIT compiler: ng build, ng serve
+
+	For using AOT compiler following changes should be made:  ng build --aot,ng serve --aot
+	
+	
+How does an Angular application work
+	0) Angular start with angular.json file and look into entry point main.ts file
+	1) Start from the entry point . main.ts ->  Which bootstrap appmodule.
+	2) AppModule bootstrap app.componenet.ts
+	3) After this, Angular calls the index.html and file contain <app-root></app-root>
+	
+TypeScript:
+	It is a superset of JavaScript.
+	Browsers can't execute TypeScript directly. 
+	Typescript must be "transpiled" into JavaScript using the tsc compiler,
+	Functions: 
+		1.	Type annotation - 
+			We can specify the type of the variables, function parameters and object properties by using : Type after the name of the variable, parameter or property.
+				var age: number = 32;
+				var name: string = 'Nirav';
+				
+		2.	Data Types
+			TypeScript supports multiple data type.
+			Number   var age: number = 32;
+			String   var name: string = 'Nirav';
+			Boolean  var default: boolean = true;
+			Array,   let student : string[] = ['Nirav', 'Ansh', 'Khyati']
+			Tuple, 
+			Any, 
+			Void
+			
+		3. Interface
+			Interface defines the syntax that any entity must adhere to. Interfaces are not to be converted to JavaScript. It’s just part of TypeScript.
+		
+		4.	Namespace
+		
+			Logical grouping of functionality
+			
+		5.  Enum
+			An enum is a special "class" that represents a group of constants (unchangeable variables).
+			
+		6.  Union
+			Union types are used when a value can be more than a single type.
+			let number: string | number = 12 || '34';
+			
+
+	
+directives 
+		Angular directives begin with ng- 
+		
+		Angular directives can be classified into main 2 categories.
+			Attribute directives  - ngStyle, ngClass,  ngModel
+			Structural directives - *ngIf, *ngFor, NgSwitch
+
+DataBinding
+		Data binding deals with how to bind your data from component to HTML DOM elements (Templates).
+		One-way data binding
+			String interpolation -- {{}}
+			Event binding - (click), (mousemove)
+			Attribute binding  -  [class]  [style], [src], [href], [height], [width],
+		
+		Two-way data binding
+			[(ngModel)]
+
+Explain string interpolation and property binding in Angular.
+	String interpolation uses the double curly braces {{ }} to display data from the component. 
+	Using property binding, we can bind the DOM property, Property binding uses the square brackets [ ] syntax. Ex. [src],[href],[class],[width].....
+	
+	
+	String interpolation and property binding allow only one-way data binding.
+	We can achieve two way data binding using ngmodel
+
+
+
+Decorators
+	
+	Decorators are functions that are invoked with a prefixed @ symbol, and are immediately followed by a class, method or property.
+	We apply the decorator using the form @expression, where expression is the name of the decorator.
+	
+	There are four main types of angular decorators:
+	
+		Class decorators,  --- @Component and @NgModule
+		Property decorators for properties inside classes, --  @Input and @Output
+		Method decorators for methods inside classes, -- such as @HostListener
+		Parameter decorators for parameters inside class constructors --  @Inject
+
+	
+	Ex.
+	
+	import { NgModule, Component, Directive, Pipe } from '@angular/core';
+	
+	// Class decorator
+		@Component({
+		  selector: 'my-app',
+		  templateUrl: './app.component.html',
+		  styleUrls: ['./app.component.css']
+		})	
+		
+	// NgModule decorator
+		@NgModule({
+		  declarations?: [], // Componenet
+		  imports?: [], // Modules
+		  providers?: [],// Services
+		  exports?: Array<Type<any> | any[]>,
+		  bootstrap?: [], // Modules
+		})
+		
+	// Pipe decorator	- Custom Pipe
+		@Pipe({
+		  name: 'uppercase',
+		  pure?: boolean
+		})
+		export class UpperCasePipe implements PipeTransform{
+			transform(){
+			}
+		}
+		
+	//	@Directive - Custom Directive use at HTML level 
+			The directives help us to change the appearance, behavior, or layout of a DOM element.
+			Ex. Calculate height of Listing in page
+			
+			@Directive({
+				selector:'[Height]'
+			})
+			
+			export class HeightDirective{}
+			
+	//  @Injectable({  
+		  providedIn: 'root',  
+		})  
+		
+		
+	//  @Input (), @Output,
+		@Input() item = ''; // decorate the property with @Input() - Parent to child data
+		@Output() newItemEvent = new EventEmitter<string>(); - Child to parent data
+		
+		export class ItemOutputComponent {
+		  @Input() item = '';
+		  @Output() newItemEvent = new EventEmitter<string>();
+
+		  addNewItem(value: string) {
+			this.newItemEvent.emit(value);
+		  }
+		}
+		
+		
+	//@HostListener
+		export class ItemOutputComponent {
+		  @HostListener('click',['$event'])
+		  onHostClick(event){
+			// Call this function when elemnt is clicked
+		  }
+		  
+		}
+		
+	@Inject () 
+		Using this decorator, we can inject services in Angular classes
+		
+		
+
+Pipes
+    Pipes are simple functions designed to accept an input value, process, and return as an output,
+	Pipes are referred to as filters. It helps to transform data and manage data within interpolation, denoted by {{ | }}.
+	
+	Default pipe: 
+		Date,
+		uppercase
+		lowercase
+		async 
+		currency
+		slice
+		number
+		percent
+		json 
+		
+	Custom pipe
+		@Pipe({name: 'default', pure: true})
+		export class DefaultPipe {
+		   transform(value: any, defaultValue: any): any {
+			   return value || defaultValue;
+		   }
+		}
+		
+		<lucid-icon [name]="folder.icon | default:'Folder'"></lucid-icon>
+		
+	
+
+	What are Pure Pipes? @Pipe({name: 'default', pure: true})
+		Angular calls the pipe only when it detects a change in the parameters being passed. 
+		A single instance of the pure pipe is used throughout all components. 
+
+	What are Impure Pipes?	@Pipe({name: 'default', pure: false})
+		Angular calls the pipe regardless of the change in the input fields. 
+		Multiple pipe instances are created for these pipes. 
+		Inputs passed to these pipes can be mutable. 
+	
+	By default, all pipes are pure.		
+
+
+Angular Services
+    @Injactable({
+	 provideIn:'root'
+	})
+	
+	Angular services are objects that get instantiated just once during the lifetime of an application. 
+	They contain methods that maintain data throughout the life of an application, i.e., data is available all the time. 
+	
+	Services in Angular are simply typescript classes with the @injectible decorator. 
+	This decorator tells angular that the class is a service and can be injected into components that need that service.
+	
+	A service can be registered as a part of the module, or as a part of the component. To register it as a part of the component, you’ll have to specify it in the providers’ array of the module.
+	
+	
+	EX. 
+	
+	    import { Injectable } from '@angular/core';
+		
+		@Injectable({  
+		  providedIn: 'root',  <-- Service availbel to all module of 
+		})  
+		export class HeroService {  
+		  constructor() { }  
+		}  
+		
+		import { Component } from '@angular/core';
+
+		@Component({
+		  selector: 'app-root',
+		  templateUrl: './app.component.html',
+		  styleUrls: ['./app.component.scss'],
+		  providers:[]//Name of services 
+		})
+		export class AppComponent {
+		  title = 'AngularProject';
+		}
+
+Dependency injection
+		Dependency injection, or DI, is a design pattern in which a class requests dependencies from external sources rather than creating them.
+		
+		Creating an injectable service
+			ng g s heroes/hero
+			
+			import { Injectable } from '@angular/core';
+
+			@Injectable({
+			  providedIn: 'root',
+			})
+			export class HeroService {
+			  constructor() { }
+			}
+			
+		The @Injectable() decorator specifies that Angular can use this class in the DI system. The metadata, providedIn: 'root', means that the HeroService is visible throughout the application.	
+
+Angular Routing:
+        They need to move between the different views that you have defined. 
+		To handle the navigation from one view to the next, you use the Angular Router.
+		Provide navigation between multiple pages of application 
+		const routes: Routes = [ 
+		   { path: 'expenses', component: ExpenseEntryListComponent }, 
+		   { path: 'expenses/detail/:id', component: ExpenseEntryComponent }, 
+		   { path: '', redirectTo: 'expenses', pathMatch: 'full' }]; 
+
+        [RouterModule.forRoot(routes)] 
+		
+		
+Lazy Loading:
+	
+		ng g m modulea --routing
+		ng g m moduleb --routing
+        
+		const routes: Routes = [
+		  { path: 'a', loadChildren: () => import('./modulea/modulea.module').then(m => m.ModuleaModule) },
+		  { path: 'b', loadChildren: () => import('./moduleb/moduleb.module').then(m => m.ModulebModule) }
+		];
+	
+What is Eager Loading?
+	All module loaded at time of application load.
+	
+What is Auth guard angular?
+		user has access/permission to view specific page / route / path in the application or not.
+			CanActivate
+			CanDeActivate
+			
+		Guard can be created by extending CanActivate keyword in service.
+
+		@Injectable({
+			provideIn:'root'
+		})
+		export class ActivateGuard implements CanActivate{
+			constructor(){}
+			canActivate(){
+				return true | false;
+			}
+		}	
+
+
+What is HttpIntercepter
+	 Interceptors allow us to intercept incoming or outgoing HTTP requests using the HttpClient. By intercepting the HTTP request, we can modify or change the value of the request.
+	
+	@Injectable()
+	export class MyInterceptor implements HttpInterceptor {
+		intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+			return next.handle(httpRequest);
+		}
+	}
+	
+	// Registration
+		@NgModule({
+		imports: [BrowserModule, HttpClientModule],
+		  declarations: [AppComponent],
+		  bootstrap: [AppComponent],
+		  providers: [
+			{ provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }
+		  ]
+		})
+
+Route Pass data and access data
+	
+	
+	export class FirstComponent {
+		constructor(private router: Router, private activatedroute:ActivatedRoute) { }
+		
+
+		ngOnInit() {
+			  this.activatedroute.data.subscribe(data => {
+				  this.product=data;
+			  })
+		}
+
+		// DOM events
+		routeWithData(){
+			 this.router.navigateByUrl('/123', { state: { hello: 'world' } });
+		}
+	}
+	
+	activatedroute -> Current active route
+	router.navigateByUrl('path',{data})
+
+		
+Internationalization (i18n)
+	Internationalization enables the application to target any language in the world. 
+	Localization is a part of the Internationalization and it enables the application to render in a targeted local language. 
+
+
+
+Angular 8 - Forms
+
+    import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+		
+		Template driven forms 
+			import FormsModule in app.module.ts
+		Reactive forms
+			import ReactiveFormsModule in app.module.ts.
+	
+			FormControl − Define basic functionality of individual form control
+
+			FormGroup − Used to aggregate the values of collection form control
+
+			FormArray − Used to aggregate the values of form control into an array
+			
+			FormControl.setValue("");  fullUpdate
+			
+			this.form.patchValue({firstName: 'Partial'}); // Partial update
+			
+			
+			form = new FormGroup({
+				"firstName": new FormControl("", Validators.required),
+				"password": new FormControl("", Validators.required),
+			});
+			
+			constructor(fb: FormBuilder) {
+			}
+			
+			form = fb.group({
+				"firstName": ["", Validators.required],
+				"password":["", Validators.required]
+			});
+   
+			fullUpdate() {
+				this.form.setValue({firstName: 'Partial', password: 'monkey'});
+			}
+
+			partialUpdate() {
+				this.form.patchValue({firstName: 'Partial'});
+			}
+		
+
+What is view encapsulation in Angular?
+	View encapsulation defines whether the template and styles defined within the component can affect the whole application or vice versa. 
+	
+	Angular provides three encapsulation strategies:
+
+		Emulated - 
+			Style of this component only apply to that component. // This is the default value for encapsulation.
+		ShadowDom - 
+			Shadow DOM has been created for the AppComponent and the style is scoped to that component and all child of that component.
+		None - 
+			styles from the this component propagate to all component of application.
+			Move all styles of this component to head section of html
+			 
+
+
+ng-template(if..else), ng-container and ngTemplateOutlet  -- insert the content dynamically inside the component html
+	
+	<ng-template></ng-template>
+		ng-template is always used along with structural derivatives such as ngIf, nfFor, and ngSwitch
+		<div class="lessons-list" *ngIf="lessons else loading">
+		  ... 
+		</div>
+
+		<ng-template #loading>
+			<div>Loading...</div>
+		</ng-template>
+		
+	<ng-container></ng-container>   
+		ng-container directive provides us with an element that we can attach a structural directive to a section of the page, without having to create an extra element just for that.
+		<ng-container *ngIf="lessons">
+			<div class="lesson" *ngFor="let lesson of lessons">
+				<div class="lesson-detail">
+					{{lesson | json}}
+				</div>
+			</div>
+		</ng-container>
+		
+	ngTemplateOutlet = Dynamic Template Creation with the ngTemplateOutlet directive.
+        <ng-template #estimateTemplate let-lessonsCounter="estimate">
+		     <div> Approximately {{lessonsCounter}} lessons ...</div>
+	    </ng-template>
+		<ng-container *ngTemplateOutlet="estimateTemplate;context:ctx"></ng-container>	
+
+BehaviorSubject vs 	Subject	
+	A BehaviorSubject holds one value. When it is subscribed it emits the value immediately. A Subject doesn't hold a value.	
+	BehaviourSubject will return the initial value or the current value on Subscription.
+	Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
+	
+	subject example (with RxJS 5 API):
+
+	const subject = new Rx.Subject();
+	subject.next(1);
+	subject.subscribe(x => console.log(x));
+	Console output will be empty
+
+	BehaviorSubject example:
+
+	const subject = new Rx.BehaviorSubject(0);
+	subject.next(1);
+	subject.subscribe(x => console.log(x));
+	Console output: 1
+	
+			
+	
+What is reactive programming JavaScript?
+    It is an Asynchronous Programming concept around data streams. 
+	
+	Reactive Programming in JavaScript is like a sequence of events that occur in time.
+	
+	Reactive programming is a programming paradigm for writing code, mainly concerned with asynchronous data streams
+
+
+
+RxJS	
+	Reactive Extension for Javascript 
+	RxJS is a javascript library that uses observables to work with reactive programming that deals with asynchronous data calls, callbacks and event-based programs.	
+	
+	
+	Observable 
+		creation functions
+			Create an observable from a promise - from(fetch('/api/endpoint'))
+			Create an observable from a counter - interval(1000);
+			Create an observable from an event - fromEvent<MouseEvent>(document.getElementById('my-element'), 'mousemove');
+			Create an observable that creates an AJAX request - ajax('/api/data')
+			
+		RxJS observables allow you to publish events. 
+	    Observables have two methods: subscribe and unsubscribe.	
+		
+	Observer (next(), error(), complete()) - Listener
+		An observer is an object with next(), error(), and complete() methods. 
+		They are the objects that subscribe to observables.
+				  	
+	
+	Operators --> 
+				  map(), filter(), concat(), and flatMap().
+	              pipe() - pipes to link operators together  
+				  
+				 	  
+				  
+NgRx
+    Angular application's state management framework.
+	NgRx uses the Redux concept of unidirectional(one-way data flow) data flow.
+    NgRx is made up of 5 main components - Actions, Reducers, Store, Selectors, and Effects. 	
+
+	Architecture
+  	
+			UI ------------> Actions  -----------> Reducer ---------> Store ---------> State -
+			^     trigger               Sent to              Update         Contain         |
+			|	                                                                            | 
+			<--------------------------------------------------------------------------------
+		
+Why is node js used in angular?
+    We can install packages in node js using NPM and npm comes in node js.
+    To Run, Deploy, Test application node js require.
+    Node js provides a server to angular to run code.
+	
+
+
+
+Communicating with backend services using HTTP
+
+    // Register service
+		import { NgModule } from '@angular/core';
+		import { HttpClientModule } from '@angular/common/http';
+
+		@NgModule({
+		  imports: [
+			HttpClientModule,
+		  ],
+		  declarations: [
+			AppComponent,
+		  ],
+		  bootstrap: [ AppComponent ]
+		})
+		export class AppModule {}
+	
+	// Use service
+	import { Injectable } from '@angular/core';
+	import { HttpClient } from '@angular/common/http';
+
+	@Injectable()
+	export class ConfigService {
+		constructor(private http: HttpClient) { }
+	}
+	
+	
+
+Angular Modules List
+
+	
+
+	BrowserModule
+		The browser module is imported from @angular/platform-browser and it is used when you want to run your application in a browser.
+
+	CommonModule
+		The common module is imported from @angular/common and it is used when you want to use directives - *ngIf, *ngFor, ngClass , ngStyle and so on.
+
+	FormsModule
+		The forms module is imported from @angular/forms and it is used when you build template driven forms. Ex. NgModel
+
+	RouterModule
+		The router module is imported from @angular/router and is used for routing RouterLink, forRoot, and forChild.
+
+	HttpClientModule
+		The HttpClientModule is imported from @angular/common/http and it used to initiate HTTP request and responses in angular apps. The HttpClient is more modern and easy to use the alternative of HTTP.
+		
+	httpIntercepter - It is http api middleware
+		import { HttpInterceptor, HttpEvent, HttpResponse, HttpRequest, HttpHandler } from '@angular/common/http';	
+		
+ 
+	BrowserModule provides services that are essential to launch and run a browser application. 
+	BrowserModule also re-exports CommonModule from @angular/common , which means that components in the AppModule also have access to the Angular directives every application needs, such as NgIf and NgFor .
+
+
+	import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
+
+## How you setup project in Angular from scratch.
+   
+   ng new <project-name>
+   
+   1)Identify html framework for application(Bootstrap, material)
+   2)Font images or images
+   3)Typography 
+   4)Identifying the modules of application for lazy loading 
+   5)For code quality and formating will use prettier and sonarlint   
+   6)Unit testing Jasmine and Karma
+   7)Folder structure
+		src
+			core - 
+				HTTP inercepter
+				guards
+				Core service - Auth, user
+			shared
+				service common between 2 modules
+				componenet common between 2 modules
+				css common between 2 modules
+				pipe
+				Directive
+			modules
+				A
+				  - pages
+				  - enum
+				  - interfaces
+				  - services
+				B
+				c
+				
+	8)Production build setup
+		create new environment file in environement folder
+			environment.prod.ts
+			environment.ts
+			
+			
+	9)Configure in angular.json for different environement		
+				
+   
+## How to start work from version control perspective
+	1)Pull Latest code 
+	2)Create branch from DEV environement
+	3)Commit code to branch
+	4)Create pull request
+	5)Merge 
+         
+	Coomand: 
+	    git checkout master - Move to branch
+		git pull origin DEV
+		git push origin DEV
+        
+    In Git, there are two main ways to integrate changes from one branch into another: the merge and the rebase. In this section you’ll learn what rebasing is, how to do it, why it’s a pretty amazing tool, and in what cases you won’t want to use it.		
+		 
+	Rebasing is the process of moving or combining a sequence of commits to a new base commit. 
+
+
+	In which situations should we use a merge?
+		Use merge whenever you want to add changes of a branched out branch back into the base branch.
+
+		Typically, you do this by clicking the "Merge" button on Pull/Merge Requests, e.g. on GitHub.
+
+	In which situations should we use a rebase?
+		Use rebase whenever you want to add changes of a base branch back to a branched out branch.
+
+		Typically, you do this in feature branches whenever there's a change in the main branch.	
+		 
+		 
